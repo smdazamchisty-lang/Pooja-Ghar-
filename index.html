@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pooja Ghar | Fixed Experience</title>
+    <title>Pooja Ghar | Universal Pocket Temple</title>
     
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/om.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,15 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #000; color: white; margin: 0; }
+        body { font-family: 'Poppins', sans-serif; background-color: #000; color: white; margin: 0; scroll-behavior: smooth; }
         .spiritual-font { font-family: 'Cinzel', serif; }
 
-        /* THE MAGIC: FIXED VIDEO BACKGROUND */
+        /* THE BACKGROUND VIDEO LOCK */
         .video-bg-container {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100vh;
-            z-index: -2; /* Stays behind everything */
+            z-index: -10;
             overflow: hidden;
         }
         #bg-video {
@@ -30,51 +30,59 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100vh;
-            background: rgba(0, 0, 0, 0.5); /* Dim the video globally */
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: -5;
         }
 
-        /* SCROLLING CONTENT LAYERS */
+        /* SCROLLABLE LAYERS */
         section {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 1rem;
+            padding: 80px 20px;
         }
 
-        /* Transparent Glass Section (See the video) */
-        .glass-section {
-            background: transparent;
-        }
-
-        /* Solid Section (Like the site you shared) */
-        .solid-section {
+        .white-layer {
             background: white;
             color: #1a1a1a;
-            box-shadow: 0px -20px 40px rgba(0,0,0,0.2);
             border-radius: 60px 60px 0 0;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
         }
 
-        .card-blur {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
         }
 
+        /* TV & PRO SCALING */
         @media (min-width: 1920px) {
             html { font-size: 22px; }
-            .max-tv-width { max-width: 1400px; margin: 0 auto; }
+            .max-tv-width { max-width: 1500px; margin: 0 auto; }
         }
 
-        /* Floating WhatsApp */
+        .unmute-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .unmute-btn:hover { background: rgba(255, 255, 255, 0.3); }
+
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background: #25d366; color: white; padding: 15px 25px;
             border-radius: 50px; font-weight: bold; z-index: 1000;
-            text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
     </style>
 </head>
@@ -92,94 +100,114 @@
             <i class="fa-solid fa-om text-orange-500 text-3xl"></i>
             <h1 class="text-xl font-bold spiritual-font tracking-widest uppercase">Pooja Ghar</h1>
         </div>
-        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
-            <a href="#services">Rituals</a>
-            <a href="#students">Students</a>
-            <a href="#download">Scan Now</a>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
+            <a href="#services" class="hover:text-orange-500 transition">Rituals</a>
+            <a href="#nri" class="hover:text-orange-500 transition">NRI Corner</a>
+            <a href="#students" class="hover:text-orange-500 transition">Students</a>
+            <a href="#download" class="hover:text-orange-500 transition">Download</a>
         </div>
-        <button class="bg-orange-600 px-6 py-2 rounded-full text-xs font-bold">JOIN WAITLIST</button>
     </nav>
 
-    <section class="glass-section">
-        <div class="text-center px-4 max-tv-width">
-            <span class="bg-orange-600/20 text-orange-400 px-4 py-1 rounded-full text-xs font-bold border border-orange-600/30 uppercase tracking-widest mb-6 inline-block">The 2026 Spiritual Platform</span>
-            <h1 class="text-5xl md:text-8xl font-bold spiritual-font mb-6 leading-tight">Find Calm <br><span class="text-orange-500">Fast.</span></h1>
-            <p class="text-lg md:text-2xl max-w-2xl mx-auto opacity-80 font-light mb-10">
-                Your Pocket Temple. Offer virtual prayers, book rituals, and join the Student Pathshala.
+    <section>
+        <div class="text-center px-4 max-tv-width flex flex-col items-center">
+            <h2 class="text-5xl md:text-8xl font-bold spiritual-font mb-6 leading-tight">The Universal <br><span class="text-orange-500">Pocket Temple</span></h2>
+            <p class="text-lg md:text-2xl max-w-3xl mx-auto opacity-90 font-light mb-10 leading-relaxed">
+                Your mobile temple for daily peace. Choose your deity, perform virtual rituals, and stay connected to your roots from anywhere in the world.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#download" class="bg-orange-600 px-10 py-4 rounded-2xl font-bold text-lg">Start Praying</a>
-                <a href="#students" class="backdrop-blur-md border border-white/20 px-10 py-4 rounded-2xl font-bold text-lg">Student Pathshala</a>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 items-center">
+                <a href="#download" class="bg-orange-600 px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:bg-orange-700 transition">Start Praying</a>
+                <button onclick="toggleMute()" id="muteBtn" class="unmute-btn text-sm font-bold">
+                    <i id="muteIcon" class="fa-solid fa-volume-xmark"></i> <span>UNMUTE BRAND VIDEO</span>
+                </button>
             </div>
         </div>
     </section>
 
-    <section id="services" class="solid-section">
-        <div class="max-w-7xl mx-auto py-10 px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-16 text-gray-900">One Platform. <br>Every Divine Need.</h2>
+    <section id="nri">
+        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 text-center">
+            <span class="text-orange-400 font-bold tracking-widest uppercase text-xs mb-4 block">Global Connection</span>
+            <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-8">Home Away From Home</h2>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                Specifically built for **NRIs** across the globe. Whether you are in New York, Sydney, or London, bring the divinity of an Indian temple into your living room on your **TV, Tablet, or Phone**. Maintain your heritage, even thousands of miles away.
+            </p>
+        </div>
+    </section>
+
+    <section id="services" class="white-layer">
+        <div class="max-w-7xl mx-auto py-10 px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold spiritual-font text-gray-900">Divine Offerings</h2>
+                <div class="w-20 h-1 bg-orange-600 mx-auto mt-4"></div>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-10 bg-gray-50 rounded-[40px] hover:bg-orange-50 transition border border-gray-100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-10 bg-stone-50 rounded-[40px] text-center hover:shadow-xl transition">
                     <i class="fa-solid fa-video text-4xl text-orange-600 mb-6"></i>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Live E-Pooja</h3>
-                    <p class="text-gray-500 mb-6 text-sm">HD Video rituals with certified Panditjis globally.</p>
-                    <span class="text-orange-600 font-bold">₹2,100 / $31</span>
+                    <p class="text-gray-500 mb-6 text-sm">Professional Vedic rituals performed live via HD video.</p>
+                    <span class="text-orange-600 font-black text-xl">₹2,100 / $31</span>
                 </div>
-                <div id="students" class="p-10 bg-gray-900 text-white rounded-[40px] shadow-2xl scale-105">
+                <div id="students" class="p-12 bg-stone-900 text-white rounded-[50px] shadow-2xl text-center scale-105 border-4 border-orange-500/10">
                     <i class="fa-solid fa-graduation-cap text-4xl text-orange-500 mb-6"></i>
                     <h3 class="text-2xl font-bold mb-4">Student Pathshala</h3>
-                    <p class="text-gray-400 mb-6 text-sm">Vedic values and Shlokas for students globally.</p>
-                    <span class="text-orange-400 font-bold text-xl">₹1,100 / $15</span>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Vedic learning and Shlokas for the younger generation.</p>
+                    <span class="text-orange-400 font-black text-2xl">₹1,100 / $15</span>
                 </div>
-                <div class="p-10 bg-gray-50 rounded-[40px] hover:bg-green-50 transition border border-gray-100">
+                <div class="p-10 bg-stone-50 rounded-[40px] text-center hover:shadow-xl transition">
                     <i class="fa-solid fa-box-open text-4xl text-green-600 mb-6"></i>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">Pooja Samagri</h3>
-                    <p class="text-gray-500 mb-6 text-sm">100% Pure ritual kits delivered to your doorstep.</p>
-                    <span class="text-green-600 font-bold">₹1,250 / $19</span>
+                    <p class="text-gray-500 mb-6 text-sm">Sacred ritual kits delivered globally to your doorstep.</p>
+                    <span class="text-green-600 font-black text-xl">₹1,250 / $19</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="download" class="glass-section">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="card-blur p-12 md:p-20 flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left">
-                <div class="flex-1">
-                    <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-6">Temple on TV</h2>
-                    <p class="text-lg opacity-80 mb-8">Scan this code with your phone camera to download the app and continue your prayer from the sofa.</p>
-                    <div class="flex justify-center lg:justify-start gap-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-12">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" class="h-12">
-                    </div>
+    <section id="download">
+        <div class="max-w-5xl mx-auto glass-card p-12 md:p-20 flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1 text-center md:text-left">
+                <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-6">Scan for TV</h2>
+                <p class="text-gray-300 text-lg mb-8 opacity-80 leading-relaxed">On your TV screen? Use your mobile camera to scan this QR code and download the app instantly.</p>
+                <div class="flex justify-center md:justify-start gap-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-14">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" class="h-14">
                 </div>
-                <div class="bg-white p-6 rounded-[40px] shadow-2xl">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://poojaghar.app" class="w-56 h-56">
-                    <p class="text-orange-600 font-bold text-center mt-4 tracking-tighter uppercase">Point Camera</p>
-                </div>
+            </div>
+            <div class="bg-white p-6 rounded-[40px] shadow-2xl">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://poojaghar.app" class="w-64 h-64">
+                <p class="text-orange-600 font-bold text-center mt-4 tracking-widest text-xs uppercase animate-pulse">Point Camera</p>
             </div>
         </div>
     </section>
 
-    <section class="solid-section">
-        <div class="max-w-4xl mx-auto py-20 px-6 w-full">
-            <h2 class="text-4xl font-bold spiritual-font text-center text-gray-900 mb-12">Join the Waitlist</h2>
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" placeholder="Your Name" class="p-5 rounded-2xl bg-gray-100 border-none outline-orange-500 text-gray-900">
-                <input type="Email" placeholder="Email Address" class="p-5 rounded-2xl bg-gray-100 border-none outline-orange-500 text-gray-900">
-                <textarea placeholder="Tell us about your spiritual needs..." rows="5" class="p-5 rounded-2xl bg-gray-100 border-none outline-orange-500 text-gray-900 md:col-span-2"></textarea>
-                <button class="bg-stone-900 text-white py-5 rounded-2xl font-bold text-xl md:col-span-2 hover:bg-black transition">Submit Interest</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="bg-black py-16 text-center text-gray-500">
-        <i class="fa-solid fa-om text-3xl text-orange-600 mb-6"></i>
-        <p class="text-xs tracking-widest">POOJA GHAR © 2026 | ALL SCREENS COMPATIBLE</p>
+    <footer class="bg-black py-20 text-center border-t border-white/5">
+        <i class="fa-solid fa-om text-4xl text-orange-600 mb-8"></i>
+        <p class="text-xs tracking-[0.5em] opacity-40 uppercase">Pooja Ghar © 2026</p>
+        <p class="text-[10px] opacity-30 mt-4 font-bold">SMARTPHONE • TABLET • LAPTOP • 4K TV</p>
     </footer>
 
-    <a href="https://wa.me/917981225876" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i> Chat with Panditji
+    <a href="https://wa.me/917981225876" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp text-2xl mr-2"></i> Panditji Help
     </a>
+
+    <script>
+        function toggleMute() {
+            var video = document.getElementById("bg-video");
+            var icon = document.getElementById("muteIcon");
+            var btnText = document.querySelector("#muteBtn span");
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.replace("fa-volume-xmark", "fa-volume-high");
+                btnText.innerText = "MUTE VIDEO";
+            } else {
+                video.muted = true;
+                icon.classList.replace("fa-volume-high", "fa-volume-xmark");
+                btnText.innerText = "UNMUTE BRAND VIDEO";
+            }
+        }
+    </script>
 
 </body>
 </html>
