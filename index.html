@@ -3,209 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pooja Ghar | Universal Pocket Temple</title>
+    <title>Digital Pooja Ghar | Bangalore's Universal Pocket Temple</title>
     
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/om.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #000; color: white; margin: 0; scroll-behavior: smooth; }
+        :root { --accent: #ea580c; --glass: rgba(255, 255, 255, 0.05); }
+        body { font-family: 'Poppins', sans-serif; background-color: #050505; color: white; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
         .spiritual-font { font-family: 'Cinzel', serif; }
+        .hindi-font { font-family: 'Noto Serif Devanagari', serif; }
 
-        /* THE BACKGROUND VIDEO LOCK */
-        .video-bg-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            z-index: -10;
-            overflow: hidden;
+        /* ADVANCED ANIMATED BACKGROUND */
+        .fixed-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -10; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         }
-        #bg-video {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
-        .video-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            background: rgba(0, 0, 0, 0.6); 
-            z-index: -5;
+        
+        /* Particle Layer */
+        .animated-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -9; opacity: 0.25;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: drift 100s linear infinite;
         }
 
-        /* SCROLLABLE LAYERS */
-        section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
+        @keyframes drift {
+            from { background-position: 0 0; }
+            to { background-position: 2000px 2000px; }
         }
 
-        .white-layer {
-            background: white;
-            color: #1a1a1a;
-            border-radius: 60px 60px 0 0;
-            box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+        /* Brand Video Backdrop */
+        .video-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -8; overflow: hidden;
+        }
+        #bg-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: contrast(1.1) brightness(0.5); }
+
+        /* MODERN UI COMPONENTS */
+        section { position: relative; padding: 120px 20px; z-index: 10; }
+        
+        .glass-panel {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            transition: all 0.5s ease;
+        }
+        .glass-panel:hover { border-color: var(--accent); }
+
+        /* TAB SYSTEM */
+        .tab-btn {
+            padding: 16px 32px; border-radius: 20px; font-weight: 600;
+            transition: 0.4s; border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px;
+        }
+        .tab-btn.active {
+            background: var(--accent); color: white; border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(234, 88, 12, 0.4); transform: translateY(-3px);
+        }
+        .tab-content { display: none; animation: fadeInUp 0.8s ease-out forwards; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 40px;
+        /* CUSTOM AUDIO PLAYER */
+        audio {
+            width: 100%; height: 45px; border-radius: 50px;
+            filter: sepia(100%) saturate(300%) grayscale(100%) invert(100%);
+            opacity: 0.9; cursor: pointer;
         }
 
-        /* TV & PRO SCALING */
-        @media (min-width: 1920px) {
-            html { font-size: 22px; }
-            .max-tv-width { max-width: 1500px; margin: 0 auto; }
+        /* SECTION TRANSITION */
+        .solid-white-section {
+            background: #ffffff; color: #111;
+            border-radius: 120px 120px 0 0; margin-top: -120px;
+            box-shadow: 0 -50px 100px rgba(0,0,0,0.7);
         }
 
-        .unmute-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .unmute-btn:hover { background: rgba(255, 255, 255, 0.3); }
-
+        /* WHATSAPP BUTTON */
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white; padding: 15px 25px;
-            border-radius: 50px; font-weight: bold; z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: fixed; bottom: 40px; right: 40px;
+            background: #25d366; color: white; padding: 20px 35px;
+            border-radius: 100px; font-weight: bold; z-index: 1000;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); text-decoration: none;
+            transition: 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.05) rotate(-2deg); }
+
+        /* TEXT SCROLLBAR */
+        .scripture-scroll::-webkit-scrollbar { width: 6px; }
+        .scripture-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="video-bg-container">
+    <div class="fixed-bg"></div>
+    <div class="animated-overlay"></div>
+    <div class="video-container">
         <video autoplay muted loop playsinline id="bg-video">
             <source src="invideo-ai-1080 Find Calm Fast with Pooja Ghar 2026-01-14.mp4" type="video/mp4">
         </video>
     </div>
-    <div class="video-overlay"></div>
 
-    <nav class="fixed top-0 w-full z-[100] p-6 flex justify-between items-center backdrop-blur-md bg-black/20">
-        <div class="flex items-center gap-2">
-            <i class="fa-solid fa-om text-orange-500 text-3xl"></i>
-            <h1 class="text-xl font-bold spiritual-font tracking-widest uppercase">Pooja Ghar</h1>
+    <nav class="fixed top-0 w-full z-[100] p-8 flex justify-between items-center bg-gradient-to-b from-black/95 via-black/40 to-transparent">
+        <div class="flex items-center gap-4">
+            <div class="bg-orange-600 p-2 rounded-xl">
+                <i class="fa-solid fa-om text-white text-3xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold spiritual-font tracking-widest">POOJA GHAR</h1>
         </div>
-        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em]">
-            <a href="#services" class="hover:text-orange-500 transition">Rituals</a>
-            <a href="#nri" class="hover:text-orange-500 transition">NRI Corner</a>
-            <a href="#students" class="hover:text-orange-500 transition">Students</a>
-            <a href="#download" class="hover:text-orange-500 transition">Download</a>
+        <div class="hidden xl:flex gap-12 text-[10px] font-black uppercase tracking-[0.5em]">
+            <a href="#about" class="hover:text-orange-500 transition">Philosophy</a>
+            <a href="#library" class="hover:text-orange-500 transition">Scriptures</a>
+            <a href="#rituals" class="hover:text-orange-500 transition">Rituals</a>
+            <a href="#faq" class="hover:text-orange-500 transition">FAQ</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right hidden md:block">
+                <p class="text-[10px] text-orange-500 font-bold uppercase tracking-widest">Live in Bangalore</p>
+                <p class="text-xs opacity-60">Verified Panditjis Available</p>
+            </div>
+            <button class="bg-white text-black px-10 py-3 rounded-2xl font-bold text-xs uppercase hover:bg-orange-600 hover:text-white transition shadow-2xl">Access App</button>
         </div>
     </nav>
 
-    <section>
-        <div class="text-center px-4 max-tv-width flex flex-col items-center">
-            <h2 class="text-5xl md:text-8xl font-bold spiritual-font mb-6 leading-tight">The Universal <br><span class="text-orange-500">Pocket Temple</span></h2>
-            <p class="text-lg md:text-2xl max-w-3xl mx-auto opacity-90 font-light mb-10 leading-relaxed">
-                Your mobile temple for daily peace. Choose your deity, perform virtual rituals, and stay connected to your roots from anywhere in the world.
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <div class="max-w-7xl mx-auto">
+            <span class="bg-orange-600/20 text-orange-500 px-6 py-2 rounded-full text-xs font-bold tracking-[0.3em] uppercase mb-8 inline-block border border-orange-500/30 animate-pulse">
+                Bangalore's #1 Digital Vedic Platform
+            </span>
+            <h2 class="text-6xl md:text-[10rem] font-bold spiritual-font mb-10 leading-[0.9] drop-shadow-2xl">
+                The Universal <br><span class="text-orange-500">Pocket Temple</span>
+            </h2>
+            <p class="text-xl md:text-3xl max-w-4xl mx-auto opacity-70 font-light mb-16 leading-relaxed">
+                Experience the sanctity of a temple on your Smart TV and Phone. Designed for the modern Bangalore family that values tradition.
             </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-6 items-center">
-                <a href="#download" class="bg-orange-600 px-12 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:bg-orange-700 transition">Start Praying</a>
-                <button onclick="toggleMute()" id="muteBtn" class="unmute-btn text-sm font-bold">
-                    <i id="muteIcon" class="fa-solid fa-volume-xmark"></i> <span>UNMUTE BRAND VIDEO</span>
-                </button>
+            <div class="flex flex-col md:flex-row justify-center gap-10">
+                <a href="#download" class="bg-orange-600 text-white px-16 py-7 rounded-3xl font-bold text-2xl shadow-[0_20px_60px_-15px_rgba(234,88,12,0.6)] hover:bg-orange-700 transition transform hover:-translate-y-2">Install Now</a>
+                <a href="#library" class="glass-panel px-16 py-7 text-white font-bold text-2xl hover:bg-white/10 transition transform hover:-translate-y-2">Explore Library</a>
             </div>
         </div>
     </section>
 
-    <section id="nri">
-        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 text-center">
-            <span class="text-orange-400 font-bold tracking-widest uppercase text-xs mb-4 block">Global Connection</span>
-            <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-8">Home Away From Home</h2>
-            <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
-                Specifically built for **NRIs** across the globe. Whether you are in New York, Sydney, or London, bring the divinity of an Indian temple into your living room on your **TV, Tablet, or Phone**. Maintain your heritage, even thousands of miles away.
-            </p>
-        </div>
-    </section>
-
-    <section id="services" class="white-layer">
-        <div class="max-w-7xl mx-auto py-10 px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-6xl font-bold spiritual-font text-gray-900">Divine Offerings</h2>
-                <div class="w-20 h-1 bg-orange-600 mx-auto mt-4"></div>
+    <section id="about" class="py-40 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <div class="relative">
+                <div class="absolute -inset-20 bg-orange-600/10 blur-[120px] rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1561059488-916d69792237?q=80&w=2000&auto=format&fit=crop" class="relative z-10 rounded-[80px] border border-white/10 shadow-3xl">
+                <div class="absolute bottom-10 -right-10 glass-panel p-10 hidden md:block">
+                    <p class="text-4xl font-black text-orange-500 mb-2">10k+</p>
+                    <p class="text-xs uppercase tracking-widest opacity-60">Bangalore Devotees</p>
+                </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="p-10 bg-stone-50 rounded-[40px] text-center hover:shadow-xl transition">
-                    <i class="fa-solid fa-video text-4xl text-orange-600 mb-6"></i>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Live E-Pooja</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Professional Vedic rituals performed live via HD video.</p>
-                    <span class="text-orange-600 font-black text-xl">₹2,100 / $31</span>
-                </div>
-                <div id="students" class="p-12 bg-stone-900 text-white rounded-[50px] shadow-2xl text-center scale-105 border-4 border-orange-500/10">
-                    <i class="fa-solid fa-graduation-cap text-4xl text-orange-500 mb-6"></i>
-                    <h3 class="text-2xl font-bold mb-4">Student Pathshala</h3>
-                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Vedic learning and Shlokas for the younger generation.</p>
-                    <span class="text-orange-400 font-black text-2xl">₹1,100 / $15</span>
-                </div>
-                <div class="p-10 bg-stone-50 rounded-[40px] text-center hover:shadow-xl transition">
-                    <i class="fa-solid fa-box-open text-4xl text-green-600 mb-6"></i>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Pooja Samagri</h3>
-                    <p class="text-gray-500 mb-6 text-sm">Sacred ritual kits delivered globally to your doorstep.</p>
-                    <span class="text-green-600 font-black text-xl">₹1,250 / $19</span>
+            <div>
+                <h3 class="text-4xl md:text-7xl font-bold spiritual-font mb-10 text-white leading-tight">Tradition <br>Redefined.</h3>
+                <p class="text-gray-400 text-xl leading-relaxed mb-10">
+                    Digital Pooja Ghar isn't just an app; it's a movement to keep the Vedic flame alive in India's tech capital. We bring high-fidelity rituals, verified scholars, and sacred texts to the palm of your hand.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="border-l-2 border-orange-600 pl-6">
+                        <h4 class="font-bold text-white mb-2">Authentic</h4>
+                        <p class="text-sm text-gray-500">Every ritual is conducted by scholars from certified Bangalore Mathas.</p>
+                    </div>
+                    <div class="border-l-2 border-orange-600 pl-6">
+                        <h4 class="font-bold text-white mb-2">Accessible</h4>
+                        <p class="text-sm text-gray-500">High-definition streaming optimized for Bangalore's 5G networks.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="download">
-        <div class="max-w-5xl mx-auto glass-card p-12 md:p-20 flex flex-col md:flex-row items-center gap-16">
-            <div class="flex-1 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl font-bold spiritual-font mb-6">Scan for TV</h2>
-                <p class="text-gray-300 text-lg mb-8 opacity-80 leading-relaxed">On your TV screen? Use your mobile camera to scan this QR code and download the app instantly.</p>
-                <div class="flex justify-center md:justify-start gap-4">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-14">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" class="h-14">
+    <section id="library" class="py-40">
+        <div class="max-w-6xl mx-auto glass-panel p-10 md:p-24 border-white/5">
+            <div class="text-center mb-20">
+                <h3 class="text-4xl md:text-7xl font-bold spiritual-font mb-6">Divine Path</h3>
+                <p class="text-orange-500 font-bold tracking-[0.5em] uppercase text-xs">Audio, Text & Soul</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 mb-20">
+                <button class="tab-btn active" onclick="openTab(event, 'hanuman')">Hanuman Chalisa</button>
+                <button class="tab-btn" onclick="openTab(event, 'shiva')">Shiva Tandava</button>
+                <button class="tab-btn" onclick="openTab(event, 'gayatri')">Gayatri Mantra</button>
+            </div>
+
+            <div id="hanuman" class="tab-content active">
+                <div class="bg-black/60 p-10 rounded-[40px] mb-12 border border-orange-500/20 text-center">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-orange-500 mb-6 font-bold">Sacred Audio Stream</p>
+                    <audio controls class="mb-2">
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="scripture-scroll max-h-[500px] overflow-y-auto px-10 text-center">
+                    <h4 class="text-4xl font-bold text-orange-500 mb-10 hindi-font uppercase tracking-widest">॥ श्री हनुमान चालीसा ॥</h4>
+                    <div class="text-2xl md:text-3xl leading-[2.2] text-gray-200 hindi-font">
+                        <p class="mb-10">श्री गुरु चरन सरोज रज, निज मनु मुकुरु सुधारि।<br>बरनऊँ रघुबर बिमल जसु, जो दायकु फल चारि॥</p>
+                        <p class="mb-10">बुद्धिहीन तनु जानिके, सुमिरौं पवन-कुमार।<br>बल बुधि बिद्या देहु मोहिं, हरहु कलेस बिकार॥</p>
+                        <p class="mb-10">जय हनुमान ज्ञान गुन सागर। जय कपीस तिहुँ लोक उजागर॥<br>राम दूत अतुलित बल धामा। अंजनि पुत्र पवनसुत नामा॥</p>
+                        <p class="mb-10">महाबीर बिक्रम बजरंगी। कुमति निवार सुमति के संगी॥<br>कंचन बरन बिराज सुबेसा। कानन कुंडल कुंचित केसा॥</p>
+                        <p class="mb-10">हाथ बज्र औ ध्वजा बिराजै। काँधे मूँज जनेऊ साजै॥<br>शंकर सुवन केसरीनंदन। तेज प्रताप महा जग बंदन॥</p>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-[40px] shadow-2xl">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://poojaghar.app" class="w-64 h-64">
-                <p class="text-orange-600 font-bold text-center mt-4 tracking-widest text-xs uppercase animate-pulse">Point Camera</p>
+
+            <div id="shiva" class="tab-content">
+                <div class="bg-black/60 p-10 rounded-[40px] mb-12 border border-blue-500/20 text-center">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-blue-400 mb-6 font-bold">Tandava Audio Stream</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="scripture-scroll max-h-[500px] overflow-y-auto px-10 text-center">
+                    <h4 class="text-4xl font-bold text-blue-400 mb-10 hindi-font tracking-widest">॥ शिवताण्डवस्तोत्रम् ॥</h4>
+                    <div class="text-2xl md:text-3xl leading-[2.2] text-gray-200 hindi-font">
+                        <p class="mb-10">जटाटवीगलज्जलप्रवाहपावितस्थले<br>गलेऽवलम्ब्य लम्बितां भुजङ्गतुङ्गमालिकाम्।</p>
+                        <p class="mb-10">डमड्डमड्डमड्डमन्निनादवड्डमर्वयं<br>चकार चण्डताण्डवं तनोतु नः शिवः शिवम्॥</p>
+                        <p class="mb-10">जटाकटाहसम्भ्रमभ्रमन्निलिम्पनिर्झरी<br>विलोलवीचिवल्लरीविराजमानमूर्धनि।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gayatri" class="tab-content">
+                <div class="bg-black/60 p-10 rounded-[40px] mb-12 border border-yellow-500/20 text-center">
+                    <p class="text-[10px] uppercase tracking-[0.4em] text-yellow-500 mb-6 font-bold">Gayatri Audio Stream</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                <div class="text-4xl md:text-6xl leading-relaxed text-gray-100 hindi-font py-20 text-center drop-shadow-lg">
+                    ॐ भूर्भुवः स्वः <br>
+                    तत्सवितुर्वरेण्यं <br>
+                    भर्गो देवस्य धीमहि <br>
+                    धियो यो नः प्रचोदयात् ॥
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-black py-20 text-center border-t border-white/5">
-        <i class="fa-solid fa-om text-4xl text-orange-600 mb-8"></i>
-        <p class="text-xs tracking-[0.5em] opacity-40 uppercase">Pooja Ghar © 2026</p>
-        <p class="text-[10px] opacity-30 mt-4 font-bold">SMARTPHONE • TABLET • LAPTOP • 4K TV</p>
+    <section id="rituals" class="solid-white-section py-40 text-gray-900">
+        <div class="max-w-7xl mx-auto px-6 max-tv-width">
+            <div class="text-center mb-32">
+                <h2 class="text-5xl md:text-[6rem] font-bold spiritual-font tracking-tighter">Namma Rituals</h2>
+                <p class="text-orange-600 font-bold tracking-[0.4em] uppercase text-sm mt-6">Connecting Bangalore to Divinity</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+                <div class="bg-stone-50 p-16 rounded-[100px] border border-stone-200 hover:shadow-2xl transition duration-500 group">
+                    <div class="w-24 h-24 bg-orange-600 text-white rounded-[35px] flex items-center justify-center text-4xl mb-12 group-hover:rotate-12 transition">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h4 class="text-4xl font-bold mb-6">Live E-Pooja</h4>
+                    <p class="text-gray-500 mb-12 text-lg leading-relaxed">Schedule real-time interactive poojas with Bangalore's leading Vedic scholars.</p>
+                    <div class="text-5xl font-black text-gray-900 mb-10">₹2,100</div>
+                    <button class="w-full py-5 border-2 border-orange-600 rounded-3xl text-orange-600 font-bold hover:bg-orange-600 hover:text-white transition">Book Ritual</button>
+                </div>
+
+                <div class="bg-stone-900 text-white p-16 rounded-[100px] shadow-3xl scale-110 relative overflow-hidden border-b-[12px] border-orange-600">
+                    <div class="w-24 h-24 bg-orange-600 text-white rounded-[35px] flex items-center justify-center text-4xl mb-12">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-4xl font-bold mb-6 spiritual-font">Student Pathshala</h4>
+                    <p class="text-gray-400 mb-12 text-lg leading-relaxed">Empowering the next generation of Bangalore with Vedic values and Shlokas.</p>
+                    <div class="text-5xl font-black text-orange-500 mb-10">₹1,100</div>
+                    <button class="w-full py-5 bg-orange-600 rounded-3xl text-white font-bold hover:bg-orange-700 transition">Join Pathshala</button>
+                </div>
+
+                <div class="bg-stone-50 p-16 rounded-[100px] border border-stone-200 hover:shadow-2xl transition duration-500 group">
+                    <div class="w-24 h-24 bg-green-700 text-white rounded-[35px] flex items-center justify-center text-4xl mb-12 group-hover:-rotate-12 transition">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h4 class="text-4xl font-bold mb-6">Pooja Samagri</h4>
+                    <p class="text-gray-500 mb-12 text-lg leading-relaxed">100% pure ritual essentials delivered within 24 hours across Bengaluru.</p>
+                    <div class="text-5xl font-black text-gray-900 mb-10">₹1,250</div>
+                    <button class="w-full py-5 border-2 border-green-700 rounded-3xl text-green-700 font-bold hover:bg-green-700 hover:text-white transition">Order Samagri</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="bg-stone-50 py-40 text-gray-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-5xl font-bold spiritual-font text-center mb-24">Common Queries</h2>
+            <div class="space-y-12">
+                <div class="border-b border-gray-200 pb-10">
+                    <h5 class="text-2xl font-bold mb-4">How do I access the pooja on my Smart TV?</h5>
+                    <p class="text-gray-500 text-lg">Download our app from the Play Store or App Store on your TV, login with your Bangalore mobile number, and your temple will be ready.</p>
+                </div>
+                <div class="border-b border-gray-200 pb-10">
+                    <h5 class="text-2xl font-bold mb-4">Are these Panditjis verified?</h5>
+                    <p class="text-gray-500 text-lg">Absolutely. We only work with verified scholars who have undergone rigorous Vedic training in recognized institutions.</p>
+                </div>
+                <div class="border-b border-gray-200 pb-10">
+                    <h5 class="text-2xl font-bold mb-4">Can I book a ritual for my new house in Whitefield?</h5>
+                    <p class="text-gray-500 text-lg">Yes, we specialize in Grahapravesha and other residential poojas across all areas of Bangalore.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="py-40 flex items-center justify-center">
+        <div class="max-w-6xl mx-auto glass-panel p-20 md:p-32 flex flex-col lg:flex-row items-center gap-24 border-orange-500/20">
+            <div class="flex-1 text-center lg:text-left">
+                <h2 class="text-5xl md:text-8xl font-bold spiritual-font mb-10 leading-tight">Your Deity <br><span class="text-orange-500">Everywhere.</span></h2>
+                <p class="text-gray-400 text-2xl mb-14 leading-relaxed">Compatible with Android, iOS, and 4K Smart TVs. Scan the code to begin.</p>
+                <div class="flex justify-center lg:justify-start gap-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-20 cursor-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" class="h-20 cursor-pointer">
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-10 bg-orange-600 rounded-[80px] opacity-20 blur-[100px] group-hover:opacity-40 transition duration-1000"></div>
+                <div class="bg-white p-16 rounded-[80px] shadow-3xl relative">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=350x350&data=https://poojaghar.app&color=ea580c" alt="QR" class="w-72 h-72 md:w-96 md:h-96">
+                    <p class="text-center mt-8 text-orange-600 font-black tracking-[0.5em] animate-pulse">SCAN TO DOWNLOAD</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-40 px-10 border-t border-white/5 relative z-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-20 text-gray-500">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 text-white spiritual-font text-2xl mb-8">
+                    <i class="fa-solid fa-om text-orange-500"></i> POOJA GHAR
+                </div>
+                <p class="text-sm leading-loose">Serving the spiritual heart of Namma Bengaluru since 2024. Your universal gateway to Vedic traditions.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-xs">Quick Links</h4>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="#about" class="hover:text-orange-500">Our Vision</a></li>
+                    <li><a href="#rituals" class="hover:text-orange-500">Live Rituals</a></li>
+                    <li><a href="#library" class="hover:text-orange-500">Sacred Library</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-xs">Contact Bangalore</h4>
+                <ul class="space-y-4 text-sm">
+                    <li><i class="fa-solid fa-phone text-orange-500 mr-3"></i> +91 7981225876</li>
+                    <li><i class="fa-solid fa-envelope text-orange-500 mr-3"></i> namaste@poojaghar.app</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-xs">Social Presence</h4>
+                <div class="flex gap-6 text-2xl">
+                    <i class="fab fa-instagram hover:text-orange-500 cursor-pointer transition"></i>
+                    <i class="fab fa-youtube hover:text-orange-500 cursor-pointer transition"></i>
+                    <i class="fab fa-facebook-f hover:text-orange-500 cursor-pointer transition"></i>
+                </div>
+            </div>
+        </div>
+        <div class="mt-40 pt-10 border-t border-white/5 text-center text-[10px] tracking-[0.8em] opacity-30 uppercase">
+            Designed for Phone, Tablet, Laptop & 4K Smart TV | © 2026 DIGITAL POOJA GHAR
+        </div>
     </footer>
 
     <a href="https://wa.me/917981225876" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp text-2xl mr-2"></i> Panditji Help
+        <div class="relative">
+            <i class="fab fa-whatsapp text-3xl"></i>
+            <span class="absolute -top-2 -right-2 w-3 h-3 bg-red-500 rounded-full border-2 border-green-600"></span>
+        </div>
+        <span class="tracking-widest">PANDITJI LIVE HELP</span>
     </a>
 
     <script>
-        function toggleMute() {
-            var video = document.getElementById("bg-video");
-            var icon = document.getElementById("muteIcon");
-            var btnText = document.querySelector("#muteBtn span");
-            
-            if (video.muted) {
-                video.muted = false;
-                icon.classList.replace("fa-volume-xmark", "fa-volume-high");
-                btnText.innerText = "MUTE VIDEO";
-            } else {
-                video.muted = true;
-                icon.classList.replace("fa-volume-high", "fa-volume-xmark");
-                btnText.innerText = "UNMUTE BRAND VIDEO";
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
             }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Auto-pause and Reset all audio when switching tabs
+            var allAudios = document.querySelectorAll('audio');
+            allAudios.forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
         }
     </script>
 
